@@ -28,6 +28,9 @@ public class VehicleMovement : MonoBehaviour
     float drag;                             //The air resistance the ship recieves in the forward direction
     bool isOnGround;                        //A flag determining if the ship is currently on the ground
 
+   
+   
+
     void Start()
     {
         //Get references to the Rigidbody and PlayerInput components
@@ -186,4 +189,6 @@ public class VehicleMovement : MonoBehaviour
         //Returns the total percentage of speed the ship is traveling
         return rigidBody.velocity.magnitude / terminalVelocity;
     }
+    
 }
+
