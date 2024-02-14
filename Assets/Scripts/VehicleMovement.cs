@@ -9,7 +9,7 @@ public class VehicleMovement : MonoBehaviour
     public float slowingVelFactor = .99f;   //The percentage of velocity the ship maintains when not thrusting (e.g., a value of .99 means the ship loses 1% velocity when not thrusting)
     public float brakingVelFactor = .95f;   //The percentage of velocty the ship maintains when braking
     public float angleOfRoll = 30f;         //The angle that the ship "banks" into a turn
-
+    public float DriftFactor = 50f;
     [Header("Hover Settings")]
     public float hoverHeight = 1.5f;        //The height the ship maintains when hovering
     public float maxGroundDist = 5f;        //The distance the ship can be above the ground before it is "falling"
@@ -47,7 +47,11 @@ public class VehicleMovement : MonoBehaviour
         //Calculate the forces to be applied to the ship
         CalculatHover();
         CalculatePropulsion();
+        
+
     }
+    public float moveForce;
+    public float turnTorque;
 
     void CalculatHover()
     {
@@ -137,7 +141,11 @@ public class VehicleMovement : MonoBehaviour
         //Calculate the desired amount of friction to apply to the side of the vehicle. This
         //is what keeps the ship from drifting into the walls during turns. If you want to add
         //drifting to the game, divide Time.fixedDeltaTime by some amount
-        Vector3 sideFriction = -transform.right * (sidewaysSpeed / Time.fixedDeltaTime);
+        Vector3 sideFriction;
+        if (input.isBraking)
+            sideFriction = -transform.right * (sidewaysSpeed / Time.fixedDeltaTime / DriftFactor);
+        else
+            sideFriction = -transform.right * (sidewaysSpeed / Time.fixedDeltaTime);
 
         //Finally, apply the sideways friction
         rigidBody.AddForce(sideFriction, ForceMode.Acceleration);
