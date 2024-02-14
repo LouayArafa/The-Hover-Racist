@@ -43,8 +43,10 @@ public class PlayerInputHandler : MonoBehaviour
 
         if (isShooting)
         {
-            // Call the Shoot method in VehicleMovement
-            carShooting.Shoot();
+            
+                carShooting.Shoot();
+            
+            
         }
     }
 }
