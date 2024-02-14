@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    
+    private void OnCollisionEnter(Collision col)
     {
-        
-    }
+        if(col.gameObject.tag=="object")
+        {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            Debug.Log($"hitten object is {col.gameObject.name}");
+        }
     }
 }

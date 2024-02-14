@@ -12,7 +12,13 @@ public class CarShooting : MonoBehaviour
     public int listSize;
     List<GameObject> listedPrefab;
 
-    private void Start()
+    PlayerInputHandler playerInputHandler;
+    private void Awake()
+    {
+        playerInputHandler = GetComponent<PlayerInputHandler>();
+    }
+
+        private void Start()
     {
         
         listedPrefab = new List<GameObject>();
@@ -23,8 +29,18 @@ public class CarShooting : MonoBehaviour
             listedPrefab.Add(obj);
         }
     }
+    public void Update()
+    {
+        if(playerInputHandler.isShooting)
+        {
+            Shoot();
+        }
+    }
+
     public void Shoot()
     {
+        Rigidbody carRb = GetComponent<Rigidbody>();
+        Vector3 carMovementDirection = carRb.velocity.normalized;
         foreach (GameObject prefabed in listedPrefab)
         {
             if (!prefabed.activeInHierarchy)
@@ -34,7 +50,7 @@ public class CarShooting : MonoBehaviour
                 Rigidbody projectileRb = prefabed.GetComponent<Rigidbody>();
                 if (projectileRb != null)
                 {
-                    projectileRb.velocity = shootPoint.forward * projectileSpeed;
+                    projectileRb.velocity = shootPoint.forward * projectileSpeed + carMovementDirection*carRb.velocity.magnitude; 
                 }
 
                 StartCoroutine(ReturningPrefab(prefabed, bulletDeathDelay));

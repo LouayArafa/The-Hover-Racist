@@ -168,7 +168,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.22492, z: 1.7196434}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2060691623452625109}
   m_Father: {fileID: 1578182404183223604}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8417294073407480990
@@ -255,6 +256,7 @@ GameObject:
   - component: {fileID: 2860770539369734308}
   - component: {fileID: 5195120367522982076}
   - component: {fileID: 8262787179841439267}
+  - component: {fileID: 4651022190006163730}
   m_Layer: 0
   m_Name: Car Parent
   m_TagString: Untagged
@@ -296,6 +298,7 @@ MonoBehaviour:
   slowingVelFactor: 0.99
   brakingVelFactor: 0.95
   angleOfRoll: 30
+  DriftFactor: 50
   hoverHeight: 1.5
   maxGroundDist: 5
   hoverForce: 300
@@ -360,10 +363,12 @@ MonoBehaviour:
   verticalAxisName: Vertical
   horizontalAxisName: Horizontal
   brakingKey: Fire2
+  shootKey: Shoot
   thruster: 0
   rudder: 0
   isBraking: 0
-  playerInput: {fileID: 0}
+  isShooting: 0
+  playerInput: {fileID: 2860770539369734308}
 --- !u!54 &8262787179841439267
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -391,6 +396,54 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 1
+--- !u!114 &4651022190006163730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976090800734920199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ef532622a1fa18449eaed96158b66b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 0}
+  shootPoint: {fileID: 2060691623452625109}
+  projectileSpeed: 50
+  bulletDeathDelay: 2
+  listSize: 20
+--- !u!1 &2159877806959105990
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2060691623452625109}
+  m_Layer: 0
+  m_Name: Spwan
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2060691623452625109
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2159877806959105990}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.876}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5901100842805306491}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5151557499755555922
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,7 +554,7 @@ MonoBehaviour:
     lacunarity: 20
     burstFrequency: 0.99999
     burstContrast: 2
-  cameraAxisName: Fire1
+  cameraAxisName: Fire3
   cameraShakeTag: 
   cameraShakeMaxSpeed: 30
   camIndex: 0

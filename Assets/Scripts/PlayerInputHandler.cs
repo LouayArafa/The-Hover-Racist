@@ -41,12 +41,6 @@ public class PlayerInputHandler : MonoBehaviour
         isBraking = playerInput.actions["Fire"].IsPressed();
         isShooting = playerInput.actions[shootKey].WasPerformedThisFrame();
 
-        if (isShooting)
-        {
-            
-                carShooting.Shoot();
-            
-            
-        }
+        
     }
 }
