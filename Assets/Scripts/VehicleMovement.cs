@@ -50,8 +50,6 @@ public class VehicleMovement : MonoBehaviour
         
 
     }
-    public float moveForce;
-    public float turnTorque;
 
     void CalculatHover()
     {
