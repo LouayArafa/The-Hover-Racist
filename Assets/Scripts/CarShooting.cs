@@ -5,6 +5,7 @@ using UnityEngine;
 public class CarShooting : MonoBehaviour
 {
     public GameObject projectilePrefab;    // Prefab for the projectile
+    public GameObject projectilePrefab2;    // Prefab for the projectile
     public Transform shootPoint;           // Point from where the projectile will be spawned
     public float projectileSpeed = 30f;    // Speed of the projectile
     public float bulletDeathDelay = 5f;
@@ -34,9 +35,18 @@ public class CarShooting : MonoBehaviour
     }
     public void Update()
     {
-        if(playerInputHandler.isShooting && IsBulletBuffed==true)
+        if(playerInputHandler.isShooting )
         {
-            Shoot();
+            if(IsBulletBuffed == true)
+            {
+                Shoot();
+
+            }
+            else
+            {
+                Shoot2();
+            }
+            
         }
     }
 
@@ -64,15 +74,18 @@ public class CarShooting : MonoBehaviour
     }
     IEnumerator ReturningPrefab(GameObject projectile, float delay)
     {
-
         yield return new WaitForSeconds(delay);
         projectile.SetActive(false);
-
     }
+
     public void Returning(GameObject projectile)
     {
         projectile.SetActive(false);
     }
+
+
+
+
     private void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Bullets Charge")
@@ -82,12 +95,48 @@ public class CarShooting : MonoBehaviour
             Destroy(col.gameObject);
             StartCoroutine(TemporaryCollisionFlag());
     }
+
     }
     IEnumerator TemporaryCollisionFlag()
+    {
+         IsBulletBuffed = true;
+         yield return new WaitForSeconds(BuffTimer);
+         IsBulletBuffed = false;
+    }
+
+
+
+void Shoot2()
 {
-    
-    IsBulletBuffed = true;
-    yield return new WaitForSeconds(BuffTimer);
-    IsBulletBuffed = false;
+    GameObject closestPlayer = FindClosestPlayer();
+    if (closestPlayer != null)
+    {
+        // Instantiate the projectile
+        GameObject projectile = Instantiate(projectilePrefab2, shootPoint.position, Quaternion.identity);
+
+        // Set projectile's target to follow the closest player
+        projectile.GetComponent<Projectile>().SetTarget(closestPlayer.transform);
+    }
 }
+
+
+GameObject FindClosestPlayer()
+    {
+         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+         GameObject closestPlayer = null;
+         float closestDistance = Mathf.Infinity;
+          foreach (GameObject player in players)
+          {
+               if (player != gameObject) // Exclude the shooting player from consideration
+               {
+                   float distance = Vector3.Distance(transform.position, player.transform.position);
+                   if (distance < closestDistance)
+                   {
+                       closestPlayer = player;
+                       closestDistance = distance;
+                   }
+               }
+          }
+          return closestPlayer;
+    }
 }
