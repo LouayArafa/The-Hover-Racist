@@ -7,10 +7,11 @@ public class Projectile : MonoBehaviour
     
     private void OnCollisionEnter(Collision col)
     {
+        Debug.Log($"hitten object is {col.gameObject.name}");
         if(col.gameObject.tag=="object")
         {
 
-            Debug.Log($"hitten object is {col.gameObject.name}");
+            
         }
     }
 }

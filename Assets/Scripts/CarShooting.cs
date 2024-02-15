@@ -6,8 +6,10 @@ public class CarShooting : MonoBehaviour
 {
     public GameObject projectilePrefab;    // Prefab for the projectile
     public Transform shootPoint;           // Point from where the projectile will be spawned
-    public float projectileSpeed = 10f;    // Speed of the projectile
-    public float bulletDeathDelay;
+    public float projectileSpeed = 30f;    // Speed of the projectile
+    public float bulletDeathDelay = 5f;
+    public float BuffTimer = 3f;
+    public bool IsBulletBuffed ;
 
     public int listSize;
     List<GameObject> listedPrefab;
@@ -20,7 +22,8 @@ public class CarShooting : MonoBehaviour
 
         private void Start()
     {
-        
+        IsBulletBuffed = false;
+
         listedPrefab = new List<GameObject>();
         for (int i = 0; i < listSize; i++)
         {
@@ -31,7 +34,7 @@ public class CarShooting : MonoBehaviour
     }
     public void Update()
     {
-        if(playerInputHandler.isShooting)
+        if(playerInputHandler.isShooting && IsBulletBuffed==true)
         {
             Shoot();
         }
@@ -70,6 +73,21 @@ public class CarShooting : MonoBehaviour
     {
         projectile.SetActive(false);
     }
+    private void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "Bullets Charge")
+        {
 
+            Debug.Log($"omg");
+            Destroy(col.gameObject);
+            StartCoroutine(TemporaryCollisionFlag());
+    }
+    }
+    IEnumerator TemporaryCollisionFlag()
+{
     
+    IsBulletBuffed = true;
+    yield return new WaitForSeconds(BuffTimer);
+    IsBulletBuffed = false;
+}
 }
