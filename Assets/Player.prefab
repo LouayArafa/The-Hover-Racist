@@ -73,7 +73,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 31
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -296,6 +296,7 @@ MonoBehaviour:
   slowingVelFactor: 0.99
   brakingVelFactor: 0.95
   angleOfRoll: 30
+  DriftFactor: 50
   hoverHeight: 1.5
   maxGroundDist: 5
   hoverForce: 300
@@ -499,7 +500,7 @@ MonoBehaviour:
     lacunarity: 20
     burstFrequency: 0.99999
     burstContrast: 2
-  cameraAxisName: Fire1
+  cameraAxisName: Fire3
   cameraShakeTag: 
   cameraShakeMaxSpeed: 30
   camIndex: 0
@@ -518,7 +519,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &300891183258010675
 Transform:
   m_ObjectHideFlags: 0
