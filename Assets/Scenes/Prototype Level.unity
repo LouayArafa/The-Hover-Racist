@@ -38,7 +38,8 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -460,6 +461,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -634,6 +636,7 @@ MonoBehaviour:
   m_SplitScreen: 1
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: 4
+
   m_SplitScreenRect:
     serializedVersion: 2
     x: 0
@@ -889,6 +892,8 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 825883172}
   m_PrefabAsset: {fileID: 0}
+
+
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1098,6 +1103,8 @@ Camera:
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 --- !u!4 &1000819671
+
+
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1107,6 +1114,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.010759354, y: 2.74792, z: -2.0223806}
+
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1296,6 +1304,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1206325270}
   m_CullTransparentMesh: 1
+
 --- !u!1 &1327881206
 GameObject:
   m_ObjectHideFlags: 0
@@ -1735,6 +1744,7 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 2067285585}
   m_PrefabAsset: {fileID: 0}
+
 --- !u!1001 &3969658919159957648
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1925,6 +1935,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1937,6 +1948,7 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 8476627093010991213}
   m_PrefabAsset: {fileID: 0}
+
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1950,3 +1962,4 @@ SceneRoots:
   - {fileID: 1000819671}
   - {fileID: 366782792}
   - {fileID: 1800046294}
+
