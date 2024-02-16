@@ -170,6 +170,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2060691623452625109}
+  - {fileID: 4241251930477896692}
   m_Father: {fileID: 1578182404183223604}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8417294073407480990
@@ -257,6 +258,7 @@ GameObject:
   - component: {fileID: 5195120367522982076}
   - component: {fileID: 8262787179841439267}
   - component: {fileID: 4651022190006163730}
+  - component: {fileID: 777137716024169429}
   m_Layer: 0
   m_Name: Car Parent
   m_TagString: Player
@@ -413,6 +415,7 @@ MonoBehaviour:
   projectilePrefab2: {fileID: 5599825653041243131, guid: 073eb1d73ae3b934489ca189c12c31ac,
     type: 3}
   shootPoint: {fileID: 2060691623452625109}
+  shootPoint2: {fileID: 4241251930477896692}
   projectileSpeed: 50
   bulletDeathDelay: 2
   BuffTimer: 3
@@ -421,6 +424,27 @@ MonoBehaviour:
   bigBulletCount: 0
   listSize: 20
   playerInputHandler: {fileID: 0}
+--- !u!65 &777137716024169429
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976090800734920199}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.98, y: 0.25, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2159877806959105990
 GameObject:
   m_ObjectHideFlags: 0
@@ -446,7 +470,38 @@ Transform:
   m_GameObject: {fileID: 2159877806959105990}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.876}
+  m_LocalPosition: {x: 0, y: 0, z: 1.242}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5901100842805306491}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4430367295565218044
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4241251930477896692}
+  m_Layer: 0
+  m_Name: Spwan2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4241251930477896692
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4430367295565218044}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 7.65, z: -0.075}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -7,6 +7,7 @@ public class CarShooting : MonoBehaviour
     public GameObject projectilePrefab;    // Prefab for the projectile
     public GameObject projectilePrefab2;    // Prefab for the projectile
     public Transform shootPoint;           // Point from where the projectile will be spawned
+    public Transform shootPoint2;
     public float projectileSpeed = 30f;    // Speed of the projectile
     public float bulletDeathDelay = 5f;
     public float BuffTimer = 3f;
@@ -46,16 +47,16 @@ public class CarShooting : MonoBehaviour
                 Shoot();
 
             }
-            // else if(IsBulletBuffeBigBullet == true)
-            //{
+             else if(IsBulletBuffeBigBullet == true)
+            {
                 Shoot2();
-              //  if(bigBulletCount==1)
-              //  {
+                if(bigBulletCount>=1)
+                {
                     IsBulletBuffeBigBullet = false;
 
-             //   }
+                }
                 
-            //}
+            }
             
         }
     }
@@ -130,7 +131,7 @@ void Shoot2()
     if (closestPlayer != null)
     {
         // Instantiate the projectile
-        GameObject projectile = Instantiate(projectilePrefab2, shootPoint.position, Quaternion.identity);
+        GameObject projectile = Instantiate(projectilePrefab2, shootPoint2.position, Quaternion.identity);
 
         // Set projectile's target to follow the closest player
         projectile.GetComponent<Projectile>().SetTarget(closestPlayer.transform);
