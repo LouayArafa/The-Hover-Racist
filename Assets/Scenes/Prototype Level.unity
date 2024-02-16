@@ -1125,28 +1125,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4651022190006163730, guid: 3b40c25cd31c38949b7fe0d2407e9c6d,
-        type: 3}
-      propertyPath: BuffTimer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4651022190006163730, guid: 3b40c25cd31c38949b7fe0d2407e9c6d,
-        type: 3}
-      propertyPath: projectilePrefab
-      value: 
-      objectReference: {fileID: 7200382291337335943, guid: e704f2aa4a44b9e4ab152d5620511872,
-        type: 3}
-    - target: {fileID: 4651022190006163730, guid: 3b40c25cd31c38949b7fe0d2407e9c6d,
-        type: 3}
-      propertyPath: projectilePrefab2
-      value: 
-      objectReference: {fileID: 5599825653041243131, guid: 073eb1d73ae3b934489ca189c12c31ac,
-        type: 3}
-    - target: {fileID: 4838695080791852898, guid: 3b40c25cd31c38949b7fe0d2407e9c6d,
-        type: 3}
-      propertyPath: brakingVelFactor
-      value: 0.95
-      objectReference: {fileID: 0}
     - target: {fileID: 8482511602417535820, guid: 3b40c25cd31c38949b7fe0d2407e9c6d,
         type: 3}
       propertyPath: m_Name
