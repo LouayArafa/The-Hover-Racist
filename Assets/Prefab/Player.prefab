@@ -469,6 +469,8 @@ GameObject:
   - component: {fileID: 2860770539369734308}
   - component: {fileID: 5195120367522982076}
   - component: {fileID: 8262787179841439267}
+  - component: {fileID: 1848872229584639385}
+  - component: {fileID: 8315148644384232016}
   m_Layer: 0
   m_Name: Car Parent
   m_TagString: Untagged
@@ -611,6 +613,40 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 1
+--- !u!65 &1848872229584639385
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976090800734920199}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2844442, y: 0.80809236, z: 3.011382}
+  m_Center: {x: -0.04591018, y: -0.09019373, z: 0.44292235}
+--- !u!114 &8315148644384232016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976090800734920199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d235b059be5a21b4f8a49d58cfe350ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playersSetup: {fileID: 0}
 --- !u!1 &2573570354096858841
 GameObject:
   m_ObjectHideFlags: 3
@@ -1740,6 +1776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e4f1c09200b5fc40b87b3918588925e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerID: 0
   PlayerNameTMP: {fileID: 5135264855827517621}
   PlayerSpeedTMP: {fileID: 9212235119517860852}
   PlayerPlaceTMP: {fileID: 3953653080500987880}
@@ -1750,7 +1787,8 @@ MonoBehaviour:
   - {fileID: 2273909432980478960}
   - {fileID: 1556064134271657189}
   - {fileID: 4075869925315727314}
-  PlayerPlace: 0
+  LapIN: 0
+  LapOUT: 0
 --- !u!1001 &711434791973894604
 PrefabInstance:
   m_ObjectHideFlags: 0

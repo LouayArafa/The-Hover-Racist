@@ -1,15 +1,24 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-// Singleton instance
+
+[System.Serializable]
+public class PlayerInfo
+{
+    public int id;
+    public Transform playerPosition;
+    public string playerName;
+    public string carType;
+    public int carLapCount;
+}
+
 public class GameManager : MonoBehaviour
 {
+    public bool TheGameIsOn;
 
-    [SerializeField] private Transform[] playersPosition;
-    [SerializeField] private string[] PlayersName;
-    [SerializeField] private string[] CarsType;
-
-    [SerializeField] private int PlayerIndex;
+    public int MaxLaps;
+    [SerializeField] private List<PlayerInfo> playersInfo;
+    [SerializeField] private int playerIndex;
 
     public static GameManager Instance { get; private set; }
 
@@ -26,30 +35,72 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public Transform GetPlayerPosition()
+    public Transform GetPlayerPosition(int playerId)
     {
-        Transform tran = playersPosition[PlayerIndex];
-        return tran;
-    }
-    public string GetPlayerName()
-    {
-        string name = PlayersName[PlayerIndex];
-        return name;
+        PlayerInfo player = FindPlayerById(playerId);
+        if (player != null)
+        {
+            return player.playerPosition;
+        }
+        return null;
     }
 
+    #region Inisial Functions
 
-    public string GetCarType()
+    public string GetPlayerName(int playerId)
     {
-        string Type = CarsType[PlayerIndex];
-        return Type;
+        PlayerInfo player = FindPlayerById(playerId);
+        return player != null ? player.playerName : string.Empty;
     }
-    public int GetPlayerPlace()
+
+    public string GetCarType(int playerId)
     {
-        return 0;
+        PlayerInfo player = FindPlayerById(playerId);
+        return player != null ? player.carType : string.Empty;
     }
+
     public void EliBa3douY9awiSa3dou()
     {
-        PlayerIndex++;
+        playerIndex++;
     }
 
+    #endregion
+
+    #region Real Time Functions
+
+    // Adds 1 to the total of laps a car has
+    public int GetPlayerLapNum(int playerId)
+    {
+        PlayerInfo player = FindPlayerById(playerId);
+        if (player != null)
+        {
+            player.carLapCount++;
+            return player.carLapCount;
+        }
+        return 0;
+    }
+
+    public int GetCarSpeed(int playerId)
+    {
+        // happens in "PlayerSetup"
+        return 0;
+    }
+
+    private PlayerInfo FindPlayerById(int playerId)
+    {
+        PlayerInfo foundPlayer = playersInfo.Find(player => player.id == playerId);
+        return foundPlayer;
+    }
+
+    int playersJoinCount = 0;
+    public int GetPlayerID()
+    {
+        //player info IDs must be 1 2 3 4 in the inspector
+        playersJoinCount++;
+        if (playersJoinCount < 4)
+            return playersJoinCount;
+        else
+            return 0;
+    }
+    #endregion
 }

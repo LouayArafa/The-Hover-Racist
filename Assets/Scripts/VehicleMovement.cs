@@ -46,7 +46,9 @@ public class VehicleMovement : MonoBehaviour
 
         //Calculate the forces to be applied to the ship
         CalculatHover();
-        CalculatePropulsion();
+
+        if(GameManager.Instance.TheGameIsOn)
+            CalculatePropulsion();
         
 
     }
