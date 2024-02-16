@@ -310,12 +310,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15687b365b084334fbc4ff0041385e20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  verticalAxisName: Vertical
+  gasKey: Gas
+  brakeKey: Brake
+  inverseGasKey: Reverse
+  cameraKey: CameraSwitch
   horizontalAxisName: Horizontal
-  brakingKey: Fire2
   thruster: 0
   rudder: 0
   isBraking: 0
+  ChangeCam: 0
   playerInput: {fileID: 0}
 --- !u!54 &8262787179841439267
 Rigidbody:

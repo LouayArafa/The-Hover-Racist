@@ -9,10 +9,10 @@ using System.Collections.Generic;
 
 public class CarCam : MonoBehaviour
 {
-    Transform rootNode;
-    Transform carCam;
-    Transform car;
-    Rigidbody carPhysics;
+	Transform rootNode;
+	Transform carCam;
+	Transform car;
+	Rigidbody carPhysics;
 	Camera mainCamera;
 
 	[Header("Cameras")]
@@ -29,12 +29,14 @@ public class CarCam : MonoBehaviour
 	[Tooltip("At which speed is the maximum of shaking reached")]
 	public float cameraShakeMaxSpeed = 30.0f;
 
-	[HideInInspector]public int camIndex;
+	[HideInInspector] public int camIndex;
 	private bool isShaking;
 
+	[SerializeField] private PlayerInputHandler playerInputHandler;
 	void Start()
     {
-		carCam = Camera.main.GetComponent<Transform>();
+        playerInputHandler = GetComponentInParent<PlayerInputHandler>();
+        carCam = Camera.main.GetComponent<Transform>();
 		mainCamera = Camera.main;
 		rootNode = GetComponent<Transform>();
 		car = rootNode.parent.GetComponent<Transform>();
@@ -111,7 +113,7 @@ public class CarCam : MonoBehaviour
 		}
 
 		//Check if Camere has to be changed
-		if (Input.GetButtonDown (cameraAxisName)) {
+		if (false) {
 			camIndex = (int)Mathf.Repeat (camIndex + 1, cameraPositions.Count);
 		}
 
@@ -129,18 +131,18 @@ public class CarCam : MonoBehaviour
 		}
 	}
 
-	private void OnDrawGizmos()
-	{
-		if (!Application.isPlaying) {
-			mainCamera = Camera.main;
-			rootNode = GetComponent<Transform> ();
-			car = rootNode.parent.GetComponent<Transform> ();
-		}
-		foreach (CameraPosition camera in cameraPositions) {
-			Gizmos.color = Color.cyan;
-			Gizmos.DrawMesh (camMesh(), car.TransformPoint(camera.xOffset, camera.yOffset, camera.zOffset), Quaternion.LookRotation(car.forward), new Vector3(mainCamera.aspect * 0.5f, 0.5f, 0.5f));
-		}
-	}
+	//private void OnDrawGizmos()
+	//{
+	//	if (!Application.isPlaying) {
+	//		mainCamera = Camera.main;
+	//		rootNode = GetComponent<Transform> ();
+	//		car = rootNode.parent.GetComponent<Transform> ();
+	//	}
+	//	foreach (CameraPosition camera in cameraPositions) {
+	//		Gizmos.color = Color.cyan;
+	//		Gizmos.DrawMesh (camMesh(), car.TransformPoint(camera.xOffset, camera.yOffset, camera.zOffset), Quaternion.LookRotation(car.forward), new Vector3(mainCamera.aspect * 0.5f, 0.5f, 0.5f));
+	//	}
+	//}
 
 	private Mesh camMesh() {
 		Vector3 p0 = new Vector3(-0.5f,0.5f,1);

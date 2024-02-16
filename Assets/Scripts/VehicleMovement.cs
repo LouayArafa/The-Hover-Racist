@@ -123,7 +123,7 @@ public class VehicleMovement : MonoBehaviour
         // Finally, apply this angle to the ship's body
         shipBody.rotation = Quaternion.Lerp(shipBody.rotation, bodyRotation, Time.deltaTime * 10f);
     }
-
+    
 
     void CalculatePropulsion()
     {
