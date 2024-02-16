@@ -10,20 +10,24 @@ public class CarShooting : MonoBehaviour
     public float projectileSpeed = 30f;    // Speed of the projectile
     public float bulletDeathDelay = 5f;
     public float BuffTimer = 3f;
-    public bool IsBulletBuffed ;
+    public bool IsBulletBuffedSmallBullets;
+    public bool IsBulletBuffeBigBullet;
+    public float bigBulletCount=0;
 
     public int listSize;
     List<GameObject> listedPrefab;
 
-    PlayerInputHandler playerInputHandler;
+    public PlayerInputHandler playerInputHandler;
     private void Awake()
     {
-        playerInputHandler = GetComponent<PlayerInputHandler>();
+        playerInputHandler = GetComponentInParent<PlayerInputHandler>();
+        
     }
 
         private void Start()
     {
-        IsBulletBuffed = false;
+        IsBulletBuffedSmallBullets = false;
+        IsBulletBuffeBigBullet = false;
 
         listedPrefab = new List<GameObject>();
         for (int i = 0; i < listSize; i++)
@@ -37,15 +41,21 @@ public class CarShooting : MonoBehaviour
     {
         if(playerInputHandler.isShooting )
         {
-            if(IsBulletBuffed == true)
+            if(IsBulletBuffedSmallBullets == true)
             {
                 Shoot();
 
             }
-            else
-            {
+            // else if(IsBulletBuffeBigBullet == true)
+            //{
                 Shoot2();
-            }
+              //  if(bigBulletCount==1)
+              //  {
+                    IsBulletBuffeBigBullet = false;
+
+             //   }
+                
+            //}
             
         }
     }
@@ -94,14 +104,22 @@ public class CarShooting : MonoBehaviour
             Debug.Log($"omg");
             Destroy(col.gameObject);
             StartCoroutine(TemporaryCollisionFlag());
-    }
+        }
+    if (col.gameObject.tag == "BuffBulletchaser")
+    {
+
+        
+        Destroy(col.gameObject);
+        IsBulletBuffeBigBullet = true;
 
     }
+
+}
     IEnumerator TemporaryCollisionFlag()
     {
-         IsBulletBuffed = true;
+    IsBulletBuffedSmallBullets = true;
          yield return new WaitForSeconds(BuffTimer);
-         IsBulletBuffed = false;
+    IsBulletBuffedSmallBullets = false;
     }
 
 
@@ -116,6 +134,7 @@ void Shoot2()
 
         // Set projectile's target to follow the closest player
         projectile.GetComponent<Projectile>().SetTarget(closestPlayer.transform);
+        bigBulletCount++;
     }
 }
 

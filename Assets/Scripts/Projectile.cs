@@ -27,6 +27,16 @@ public class Projectile : MonoBehaviour
         }
 
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+
+
+            Destroy(gameObject);
+
+        }
+    }
     private void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Player")
@@ -37,4 +47,5 @@ public class Projectile : MonoBehaviour
             
         }
     }
+    
 }

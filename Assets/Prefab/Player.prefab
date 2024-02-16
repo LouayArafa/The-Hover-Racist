@@ -259,7 +259,7 @@ GameObject:
   - component: {fileID: 4651022190006163730}
   m_Layer: 0
   m_Name: Car Parent
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -408,11 +408,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef532622a1fa18449eaed96158b66b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 7200382291337335943, guid: e704f2aa4a44b9e4ab152d5620511872,
+    type: 3}
+  projectilePrefab2: {fileID: 5599825653041243131, guid: 073eb1d73ae3b934489ca189c12c31ac,
+    type: 3}
   shootPoint: {fileID: 2060691623452625109}
   projectileSpeed: 50
   bulletDeathDelay: 2
+  BuffTimer: 3
+  IsBulletBuffedSmallBullets: 0
+  IsBulletBuffeBigBullet: 0
+  bigBulletCount: 0
   listSize: 20
+  playerInputHandler: {fileID: 0}
 --- !u!1 &2159877806959105990
 GameObject:
   m_ObjectHideFlags: 0
