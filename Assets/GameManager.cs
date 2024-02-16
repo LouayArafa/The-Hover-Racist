@@ -43,6 +43,10 @@ public class GameManager : MonoBehaviour
         string Type = CarsType[PlayerIndex];
         return Type;
     }
+    public int GetPlayerPlace()
+    {
+        return 0;
+    }
     public void EliBa3douY9awiSa3dou()
     {
         PlayerIndex++;

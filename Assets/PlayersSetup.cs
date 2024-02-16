@@ -5,15 +5,21 @@ using UnityEngine;
 
 public class PlayersSetup : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI PlayerName;
-    [SerializeField] private GameObject[] CarsVFX; 
-    GameManager gameManager;
+    [SerializeField] private TextMeshProUGUI PlayerNameTMP;
+    [SerializeField] private TextMeshProUGUI PlayerSpeedTMP;
+    [SerializeField] private TextMeshProUGUI PlayerPlaceTMP;
+
+    [SerializeField] private VehicleMovement vehicleMovement;
+    [SerializeField] private GameObject[] CarsVFX;
+    [SerializeField] private int PlayerPlace;
+
+    GameManager gameManager; 
     private void Awake()
     {
         gameManager = GameManager.Instance;
         transform.position = gameManager.GetPlayerPosition().position;
         transform.rotation = gameManager.GetPlayerPosition().rotation;
-        PlayerName.text = gameManager.GetPlayerName();
+        PlayerNameTMP.text = gameManager.GetPlayerName();
         
         foreach(GameObject type in CarsVFX)
         {
@@ -28,6 +34,8 @@ public class PlayersSetup : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        PlayerSpeedTMP.text = (Mathf.FloorToInt(vehicleMovement.speed)*5).ToString() + " km/h";
+        PlayerPlace = gameManager.GetPlayerPlace();
+        PlayerPlaceTMP.text = "#" + PlayerPlace.ToString();
     }
 }
