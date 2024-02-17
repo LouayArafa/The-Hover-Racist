@@ -62,6 +62,19 @@ public class PlayersSetup : MonoBehaviour
         {
             LapIN = LapOUT = false;
         }
+
+        if (Input.GetKeyDown("k") && !gameManager.TheGameIsOn)
+        {
+            gameManager.MaxLaps++;
+            PlayerPlaceTMP.text = "0/" + gameManager.MaxLaps.ToString();
+
+        }
+        if (Input.GetKeyDown("j") && !gameManager.TheGameIsOn)
+        {
+            gameManager.MaxLaps--;
+            PlayerPlaceTMP.text = "0/" + gameManager.MaxLaps.ToString();
+
+        }
     }
     void PlayerWon()
     {

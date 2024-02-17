@@ -269,7 +269,7 @@ MonoBehaviour:
     playerName: borni
     carType: Green
     carLapCount: 0
-  playerIndex: 0
+  playerResultCount: 0
 --- !u!1 &2970415038833222655
 GameObject:
   m_ObjectHideFlags: 0
