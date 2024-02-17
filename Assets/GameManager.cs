@@ -96,9 +96,12 @@ public class GameManager : MonoBehaviour
     public int GetPlayerID()
     {
         //player info IDs must be 1 2 3 4 in the inspector
-        playersJoinCount++;
         if (playersJoinCount < 4)
+        {
+            playersJoinCount++;
             return playersJoinCount;
+        }
+            
         else
             return 0;
     }
