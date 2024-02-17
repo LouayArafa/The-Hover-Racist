@@ -5,12 +5,12 @@ using UnityEngine;
 public class PlayerCollisions : MonoBehaviour
 {
     [SerializeField] PlayersSetup playersSetup;
-    PlayerInputHandler playerInputHandler;
     VehicleMovement vehicleMovement;
+
+
     private void Start()
     {
         playersSetup = GetComponentInParent<PlayersSetup>();
-        playerInputHandler = GetComponentInParent<PlayerInputHandler>();
         vehicleMovement = GetComponentInParent<VehicleMovement>();
     }
     private void OnTriggerEnter(Collider other)

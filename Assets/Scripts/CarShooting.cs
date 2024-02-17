@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CarShooting : MonoBehaviour
@@ -9,6 +10,9 @@ public class CarShooting : MonoBehaviour
     public float projectileSpeed = 10f;    // Speed of the projectile
     public float bulletDeathDelay;
 
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] pop;
+
     public int listSize;
     List<GameObject> listedPrefab;
 
@@ -16,6 +20,7 @@ public class CarShooting : MonoBehaviour
     private void Awake()
     {
         playerInputHandler = GetComponent<PlayerInputHandler>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -47,6 +52,12 @@ public class CarShooting : MonoBehaviour
             {
                 prefabed.SetActive(true);
                 prefabed.transform.position = shootPoint.position;
+                if (pop != null && pop.Count() > 0)
+                {
+                    int x = Random.Range(0, pop.Count()); ;
+                    audioSource.PlayOneShot(pop[x]);
+                }
+                    
                 Rigidbody projectileRb = prefabed.GetComponent<Rigidbody>();
                 if (projectileRb != null)
                 {

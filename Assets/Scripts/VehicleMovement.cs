@@ -24,6 +24,12 @@ public class VehicleMovement : MonoBehaviour
     public float hoverGravity = 20f;        //The gravity applied to the ship while it is on the ground
     public float fallGravity = 80f;         //The gravity applied to the ship while it is falling
 
+
+    [Header("Sound")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip boost;
+
+
     Rigidbody rigidBody;                    //A reference to the ship's rigidbody
     PlayerInputHandler input;                       //A reference to the player's input					
     float drag;                             //The air resistance the ship recieves in the forward direction
@@ -34,7 +40,7 @@ public class VehicleMovement : MonoBehaviour
         //Get references to the Rigidbody and PlayerInput components
         rigidBody = GetComponent<Rigidbody>();
         input = GetComponent<PlayerInputHandler>();
-
+        audioSource = GetComponent<AudioSource>();
         //Calculate the ship's drag value
         drag = driveForce / terminalVelocity;
     }
@@ -177,6 +183,7 @@ public class VehicleMovement : MonoBehaviour
     public void Boost()
     {
         rigidBody.velocity *= 1.4f;
+        audioSource.PlayOneShot(boost);
     }
     void OnCollisionStay(Collision collision)
     {
