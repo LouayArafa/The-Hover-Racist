@@ -9,6 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Prototype Level.unity
     guid: 191b48ae6d2c4504fb27b654490d544c
   - enabled: 1
+    path: Assets/Scenes/Switcher Scene.unity
+    guid: e79f4cce971263548bef2198be93b545
+  - enabled: 1
+    path: Assets/Scenes/Battle Arena.unity
+    guid: 11511528cbc660d4c810fd4ca3927ef3
+  - enabled: 1
     path: Assets/Scenes/Circuit 1.unity
     guid: 7b533dfe561bc47c8975c955fe4ef3d3
   m_configObjects: {}

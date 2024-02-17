@@ -178,7 +178,7 @@ public class VehicleMovement : MonoBehaviour
 
     public void SlowDown()
     {
-        rigidBody.velocity /= 2;
+        rigidBody.velocity /= 4;
     }
     public void Boost()
     {
