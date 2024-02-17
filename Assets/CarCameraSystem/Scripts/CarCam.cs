@@ -10,10 +10,9 @@ using System.Collections.Generic;
 public class CarCam : MonoBehaviour
 {
 	Transform rootNode;
-	Transform carCam;
+	[SerializeField] private Transform carCam;
 	Transform car;
 	Rigidbody carPhysics;
-	Camera mainCamera;
 
 	[Header("Cameras")]
 	public List<CameraPosition> cameraPositions;
@@ -36,8 +35,6 @@ public class CarCam : MonoBehaviour
 	void Start()
     {
         playerInputHandler = GetComponentInParent<PlayerInputHandler>();
-        carCam = Camera.main.GetComponent<Transform>();
-		mainCamera = Camera.main;
 		rootNode = GetComponent<Transform>();
 		car = rootNode.parent.GetComponent<Transform>();
 		carPhysics = car.GetComponent<Rigidbody>();

@@ -11,16 +11,18 @@ public class PlayerInputHandler : MonoBehaviour
     public string brakeKey;
     public string inverseGasKey;
     public string cameraKey;
-    public string horizontalAxisName;    //The name of the rudder axis
-                                         //We hide these in the inspector because we want 
-                                         //them public but we don't want people trying to change them
+    public string shootKey = "Shoot";  // New input action for shooting
+    public string horizontalAxisName;    
     [SerializeField] private bool isGasing;
     [SerializeField] private bool isReversing;
+
         
      public float thruster;            //The current thruster value
      public float rudder;              //The current rudder value
      public bool isBraking;            //The current brake value
      public bool ChangeCam;
+     public bool isShooting;
+
     [SerializeField] private PlayerInput playerInput;
 
     private void Awake()
@@ -29,10 +31,7 @@ public class PlayerInputHandler : MonoBehaviour
     }
     void Update()
     {
-        //If the player presses the Escape key and this is a build (not the editor), exit the game
-        if (Input.GetButtonDown("Cancel") && !Application.isEditor)
-            Application.Quit();
-
+       
 
         isGasing = playerInput.actions[gasKey].IsPressed();
         isReversing = playerInput.actions[inverseGasKey].IsPressed();
@@ -49,6 +48,10 @@ public class PlayerInputHandler : MonoBehaviour
             thruster = 0;
         rudder = playerInput.actions["Move"].ReadValue<Vector2>().x;
         isBraking = playerInput.actions[brakeKey].IsPressed();
+
+        if(GameManager.Instance.TheGameIsOn)
+            isShooting = playerInput.actions[shootKey].WasPerformedThisFrame();
+
         //ChangeCam = playerInput.actions[cameraKey].IsPressed();
     }
 }

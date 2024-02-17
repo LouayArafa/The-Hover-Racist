@@ -9,6 +9,8 @@ public class PlayersSetup : MonoBehaviour
     [SerializeField] private TextMeshProUGUI PlayerNameTMP;
     [SerializeField] private TextMeshProUGUI PlayerSpeedTMP;
     [SerializeField] private TextMeshProUGUI PlayerPlaceTMP;
+    [SerializeField] private TextMeshProUGUI PlayerResult;
+
 
     [SerializeField] private VehicleMovement vehicleMovement;
     [SerializeField] private GameObject[] CarsVFX;
@@ -40,19 +42,34 @@ public class PlayersSetup : MonoBehaviour
 
         PlayerPlaceTMP.text = "0/" + gameManager.MaxLaps.ToString();
 
-        //last thing
-        gameManager.EliBa3douY9awiSa3dou();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (LapIN && LapOUT)
+        {
+            int Laps = gameManager.GetPlayerLapNum(playerID);
+            PlayerPlaceTMP.text = Laps.ToString() + "/" + gameManager.MaxLaps.ToString();
+            if(Laps == gameManager.MaxLaps)
+            { PlayerWon(); }
+
+            LapIN = LapOUT = false;
+        }
         PlayerSpeedTMP.text = (Mathf.FloorToInt(vehicleMovement.speed) * 5).ToString() + " km/h";
 
         if (LapIN && LapOUT)
         {
-            PlayerPlaceTMP.text = gameManager.GetPlayerLapNum(playerID).ToString() + "/" + gameManager.MaxLaps.ToString();
             LapIN = LapOUT = false;
         }
+    }
+    void PlayerWon()
+    {
+        PlayerSpeedTMP.enabled = false;
+        PlayerNameTMP.enabled = false;
+        PlayerPlaceTMP.enabled = false;
+        PlayerResult.gameObject.SetActive(true);
+        PlayerResult.text = gameManager.GetPlayerResult().ToString() + "#\n Place!";
+        vehicleMovement.enabled = false;
     }
 }

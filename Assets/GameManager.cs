@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
     public int MaxLaps;
     [SerializeField] private List<PlayerInfo> playersInfo;
-    [SerializeField] private int playerIndex;
+    [SerializeField] private int playerResultCount = 0;
 
     public static GameManager Instance { get; private set; }
 
@@ -59,10 +59,7 @@ public class GameManager : MonoBehaviour
         return player != null ? player.carType : string.Empty;
     }
 
-    public void EliBa3douY9awiSa3dou()
-    {
-        playerIndex++;
-    }
+    
 
     #endregion
 
@@ -79,7 +76,11 @@ public class GameManager : MonoBehaviour
         }
         return 0;
     }
-
+    public int GetPlayerResult()
+    {
+        playerResultCount++;
+        return playerResultCount;
+    }
     public int GetCarSpeed(int playerId)
     {
         // happens in "PlayerSetup"

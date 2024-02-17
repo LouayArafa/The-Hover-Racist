@@ -10,6 +10,7 @@ public class VehicleMovement : MonoBehaviour
     public float brakingVelFactor = .95f;   //The percentage of velocty the ship maintains when braking
     public float angleOfRoll = 30f;         //The angle that the ship "banks" into a turn
     public float DriftFactor = 50f;
+    
     [Header("Hover Settings")]
     public float hoverHeight = 1.5f;        //The height the ship maintains when hovering
     public float maxGroundDist = 5f;        //The distance the ship can be above the ground before it is "falling"
@@ -169,6 +170,14 @@ public class VehicleMovement : MonoBehaviour
         rigidBody.AddForce(transform.forward * propulsion, ForceMode.Acceleration);
     }
 
+    public void SlowDown()
+    {
+        rigidBody.velocity /= 2;
+    }
+    public void Boost()
+    {
+        rigidBody.velocity *= 1.4f;
+    }
     void OnCollisionStay(Collision collision)
     {
         //If the ship has collided with an object on the Wall layer...
